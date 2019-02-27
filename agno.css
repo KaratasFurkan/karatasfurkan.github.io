@@ -1,0 +1,48 @@
+body {
+    padding-top: 70px;
+    background-color: #eee;
+}
+
+div.row {
+    margin: 0px;
+}
+
+div.input {
+    padding: 1px;
+}
+
+div.form-group {
+    margin: 0px;
+    padding: 1px;
+}
+
+input.form-control {
+    padding: 6px 0px 6px 12px;
+}
+
+input[type=number]:hover::-webkit-inner-spin-button, input[type=number]:focus::-webkit-inner-spin-button {
+    width: 14px;
+    height: 35px;
+}
+
+#ekleButonu {
+    margin: 0px;
+    width: 100%;
+}
+
+/* #ekleButonu:focus { */
+/*     outline: none; */
+/*     background-color: #fff; */
+/* } */
+
+div.ekle {
+    padding: 2px;
+}
+
+#table-row {
+    margin-top: 30px;
+}
+
+table {
+    outline: 2px solid lightgrey;
+}
