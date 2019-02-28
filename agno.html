@@ -6,75 +6,76 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Agno Hesaplayıcı</title>
-        <!-- Bootstrap -->
-        <!-- Latest compiled and minified CSS -->
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- myCSS -->
         <link href="agno.css" rel="stylesheet"/>
         <!-- jQuery -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="agno.js"></script>
         <!-- jQuery -->
     </head>
-    <body>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5 col-xs-6 col-xs-offset-3 input">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="ders" placeholder="Ders adı">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-5 col-xs-3 col-xs-offset-3 input">
-                <div class="form-group">
-                    <input type="number" class="form-control" name="kredi" placeholder="Kredi" min="0">
-                </div>
-            </div>
-            <div class="col-md-1 col-xs-3 input">
-                <div class="form-group">
-                    <input type="number" class="form-control" name="not" placeholder="Not" min="0" max="4" step="0.5">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 col-md-offset-5 col-xs-6 col-xs-offset-3 ekle">
-                <button type="submit" id="ekleButonu" class="btn btn-default">Ekle</button>
-            </div>
-        </div>
-
+    <body id="bootstrap-overrides">
         <div class="row" id="table-row">
-            <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
+            <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
                 <table class="table table-striped">
-                    <thead>
+                    <thead id="thead">
                         <tr>
                             <th>#</th>
                             <th>Ders</th>
                             <th>Kredi</th>
                             <th>Not</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr id="inputTr">
                             <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="col-md-5 paddingLeftZero">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="ders" placeholder="Ders">
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="col-md-2 paddingLeftZero">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="kredi" placeholder="Kredi" min="0">
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="col-md-2 paddingLeftZero">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="not" placeholder="Not" min="0" max="4" step="0.5">
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="paddingLeftZero">
+                                <button type="submit" class="btn btn-default plusBtn"> <!-- disabled -->
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th scope="row">3</th>
+                            <td class="col-md-5 paddingLeftZero">
+                                <input type="text" class="plainTextInput" name="ders" value="12">
+                            </td>
+                            <td class="col-md-2 paddingLeftZero">
+                                <input type="number" class="plainTextInput" name="kredi" value="2">
+                            </td>
+                            <td class="col-md-2 paddingLeftZero">
+                                <input type="number" class="plainTextInput" name="not" value="3">
+                            </td>
+                            <td class="paddingLeftZero">
+                                <button type="button" class="close" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -83,12 +84,5 @@
 
 
 
-
-
-
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </body>
 </html>

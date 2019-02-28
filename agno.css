@@ -20,23 +20,28 @@ input.form-control {
     padding: 6px 0px 6px 12px;
 }
 
-input[type=number]:hover::-webkit-inner-spin-button, input[type=number]:focus::-webkit-inner-spin-button {
+input[type=number]:hover::-webkit-inner-spin-button,
+input[type=number]:focus::-webkit-inner-spin-button {
     width: 14px;
     height: 35px;
 }
 
-#ekleButonu {
-    margin: 0px;
-    width: 100%;
+.plusBtn {
+    border: none;
+    background-color: inherit;
 }
 
-/* #ekleButonu:focus { */
-/*     outline: none; */
-/*     background-color: #fff; */
-/* } */
+#bootstrap-overrides .disabled {
+    opacity: 0.2;
+}
 
-div.ekle {
-    padding: 2px;
+#bootstrap-overrides .paddingLeftZero {
+    padding-left: 0px;
+}
+
+button.close {
+    float: none;
+    padding: 0px 12px;
 }
 
 #table-row {
@@ -45,4 +50,28 @@ div.ekle {
 
 table {
     outline: 2px solid lightgrey;
+}
+
+#bootstrap-overrides th {
+    vertical-align: middle;
+    width: 1%;
+}
+
+#bootstrap-overrides td {
+    vertical-align: middle;
+}
+
+#thead th {
+    padding: 8px 8px 8px 14px;
+}
+
+p {
+    padding: 0px 6px;
+    margin: 0px;
+}
+
+.plainTextInput {
+    border: none;
+    background-color: inherit;
+    padding-left: 12px;
 }
