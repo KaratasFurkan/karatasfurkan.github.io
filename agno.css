@@ -65,13 +65,13 @@ table {
     padding: 8px 8px 8px 14px;
 }
 
-p {
-    padding: 0px 6px;
-    margin: 0px;
-}
 
 .plainTextInput {
     border: none;
     background-color: inherit;
-    padding-left: 12px;
+    padding-left: 14px;
+}
+
+input {
+    width: 100%;
 }
