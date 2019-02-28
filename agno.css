@@ -1,5 +1,4 @@
 body {
-    padding-top: 70px;
     background-color: #eee;
 }
 
@@ -74,4 +73,13 @@ table {
 
 input {
     width: 100%;
+}
+
+#agnoRow {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#agno {
+    font-size: 70px;
 }

@@ -1,3 +1,7 @@
+function agnoHesapla(){
+    $("#agno").text("3.2");
+}
+
 $(document).ready(function(){
     $(".plusBtn").click(function(){
         var ders = $("[name=ders]").val();
@@ -19,5 +23,12 @@ $(document).ready(function(){
             + '</td>'
             + '</tr>';
         $("table tbody").append(markup);
+        agnoHesapla();
+    });
+
+    $("tbody").on("click", ".close", function(){
+        $(this).parents("tr").remove();
+        agnoHesapla();
+        $()
     });
 });
