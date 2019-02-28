@@ -58,4 +58,8 @@ $(document).ready(function(){
         $(this).parents("tr").remove();
         agnoHesapla();
     });
+
+    $("tbody").on("blur", ".plainTextInput",function(){
+        agnoHesapla();
+    })
 });
