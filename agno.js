@@ -1,5 +1,23 @@
 function agnoHesapla(){
-    $("#agno").text("3.2");
+    var agno = 0;
+    var kredi = 0;
+    var row = $("#inputTr");
+    while(row.next().html()){
+        row = row.next();
+        kredi += parseFloat(row.find("[name=kredi]").val());
+        agno += parseFloat(row.find("[name=kredi]").val()) * parseFloat(row.find("[name=not]").val());
+    }
+    agno /= kredi;
+    if(agno){
+        $("#agno").text(agno.toFixed(2));
+    }
+    else{
+        $("#agno").text("");
+    }
+}
+
+function inputlariBosalt(){
+    $("#inputTr").find("input").val("");
 }
 
 $(document).ready(function(){
@@ -7,7 +25,13 @@ $(document).ready(function(){
         var ders = $("[name=ders]").val();
         var kredi = $("[name=kredi]").val();
         var not = $("[name=not]").val();
-        var index = parseInt($("tbody > tr:last-child > th").text()) + 1;
+        var index;
+        if($("tbody > tr:last-child > th").text()){
+            index = parseInt($("tbody > tr:last-child > th").text()) + 1;
+        }
+        else{
+            index = 1;
+        }
         var markup = '<tr>'
             + '<th scope="row">'+ index +'</th>'
             + '<td class="col-md-5 paddingLeftZero">'
@@ -24,11 +48,14 @@ $(document).ready(function(){
             + '</tr>';
         $("table tbody").append(markup);
         agnoHesapla();
+        inputlariBosalt();
     });
 
     $("tbody").on("click", ".close", function(){
+        $(this).parents("tr").nextAll().children("th").text(function() {
+            return parseInt($(this).text()) - 1;
+        });
         $(this).parents("tr").remove();
         agnoHesapla();
-        $()
     });
 });
