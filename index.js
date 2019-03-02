@@ -111,8 +111,8 @@ $(document).ready(function(){
             localeSatirKaydet(newIndex, ders, kredi, not);
             return newIndex;
         });
+        localdenSatirSil($("tr").last().index());
         $(this).parents("tr").remove();
-        localdenSatirSil(newIndex + 1);
         agnoHesapla();
     });
 
