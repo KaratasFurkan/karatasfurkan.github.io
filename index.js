@@ -53,20 +53,41 @@ function localeKaydet(key, value){
     }
 }
 
+function localeSatirKaydet(index, value1, value2, value3){
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("ders" + index, value1);
+        localStorage.setItem("kredi" + index, value2);
+        localStorage.setItem("not" + index, value3);
+    }
+}
+
 function localdenSil(key){
     if (typeof(Storage) !== "undefined") {
         localStorage.removeItem(key);
     }
 }
 
-$(document).ready(function(){
-    var ders, kredi, not, index = 1;
+function localdenSatirSil(index){
+    if (typeof(Storage) !== "undefined") {
+        localStorage.removeItem("ders" + index);
+        localStorage.removeItem("kredi" + index);
+        localStorage.removeItem("not" + index);
+    }
+}
+
+function localVerileriGetir(){
+    var index = 1;
     while(localStorage.getItem("ders" + index)){
         dersEkle(localStorage.getItem("ders" + index)
                  , localStorage.getItem("kredi" + index)
                  , localStorage.getItem("not" + index), index);
         index++;
     }
+}
+
+$(document).ready(function(){
+    var ders, kredi, not, index;
+    localVerileriGetir();
     agnoHesapla();
 
     $(".plusBtn").click(function(){
@@ -77,26 +98,30 @@ $(document).ready(function(){
         dersEkle(ders, kredi, not, index);
         agnoHesapla();
         inputlariBosalt();
-        localeKaydet("ders" + index, ders);
-        localeKaydet("kredi" + index, kredi);
-        localeKaydet("not" + index, not);
+        localeSatirKaydet(index, ders, kredi, not);
     });
 
     $("tbody").on("click", ".close", function(){
         var newIndex;
         $(this).parents("tr").nextAll().children("th").text(function() {
             newIndex = parseInt($(this).text()) - 1;
+            ders = $(this).next().children("[name=ders]").val();
+            kredi = $(this).nextAll().children("[name=kredi]").val();
+            not = $(this).nextAll().children("[name=not]").val();
+            localeSatirKaydet(newIndex, ders, kredi, not);
             return newIndex;
         });
         $(this).parents("tr").remove();
-        // localdenSil("ders");
-        // localdenSil("kredi");
-        // localdenSil("not");
+        localdenSatirSil(newIndex + 1);
         agnoHesapla();
     });
 
     $("tbody").on("blur", ".plainTextInput",function(){
-        //localeKaydet();
+        var key, value;
+        key = $(this).attr("name");
+        index = $(this).parent().siblings("th").text();
+        value = $(this).val();
+        localeKaydet(key + index, value);
         agnoHesapla();
     });
 });
