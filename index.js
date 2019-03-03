@@ -84,6 +84,7 @@ $(document).ready(function(){
     var ders, kredi, not;
     localVerileriGetir(localStorage.getItem("length"));
     agnoHesapla();
+    $(".form-control").eq(0).focus();
 
     //----------- Input kutuları -----------//
     $(".form-control").eq(0).on("keydown", function(event) {
