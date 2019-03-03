@@ -78,11 +78,43 @@ function localVerileriGetir(length){
                  localStorage.getItem("not" + i));
     }
 }
+
 //--------------------------------------------------------------------------//
 $(document).ready(function(){
     var ders, kredi, not;
     localVerileriGetir(localStorage.getItem("length"));
     agnoHesapla();
+
+    //----------- Input kutuları -----------//
+    $(".form-control").eq(0).on("keydown", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            $(".form-control").eq(1).focus();
+        }
+    });
+
+    $(".form-control").eq(1).on("keydown", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            $(".form-control").eq(2).focus();
+        }
+    });
+
+    $(".form-control").eq(2).on("keydown", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            $(".plusBtn").click();
+            $(".form-control").eq(0).focus();
+        }
+    });
+
+    $(".plainTextInput").on("keydown", function(event) {
+        if (event.keyCode === 13) {
+            agnoHesapla();
+        }
+    });
+    //--------------------------------------//
+
     $(".plusBtn").click(function(){
         ders = $("[name=ders]").val();
         kredi = $("[name=kredi]").val();
