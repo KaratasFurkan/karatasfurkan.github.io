@@ -1,6 +1,6 @@
-function dersEkle(ders, kredi, not, index){
+function dersEkle(index, ders, kredi, not){
     var markup = '<tr>'
-        + '<th scope="row">'+ index +'</th>'
+        + '<th scope="row">' + index + '</th>'
         + '<td class="col-md-5 paddingLeftZero">'
         + '<input type="text" class="plainTextInput" name="ders" value="'+ ders +'"/></td>'
         + '<td class="col-md-2 paddingLeftZero">'
@@ -13,15 +13,16 @@ function dersEkle(ders, kredi, not, index){
         + '</button>'
         + '</td>'
         + '</tr>';
-    $("table tbody").append(markup);
+    $("#inputTr").after(markup);
 }
 
-function indexHesapla(){
-    if($("tbody > tr:last-child > th").text()){
-        return parseInt($("tbody > tr:last-child > th").text()) + 1;
+function getLength(){
+    var length;
+    if((length = $("tbody > tr:last-child > th").text())){ //assignment
+        return parseInt(length);
     }
     else{
-        return 1;
+        return 0;
     }
 }
 
@@ -47,27 +48,22 @@ function inputlariBosalt(){
     $("#inputTr").find("input").val("");
 }
 
-function localeKaydet(key, value){
+function localeKaydet(length){
     if (typeof(Storage) !== "undefined") {
-        localStorage.setItem(key, value);
+        var i, ders, kredi, not;
+        for(i = 1; i <= length; i++){
+            ders = $("tbody tr").eq(i).find("[name=ders]").val();
+            kredi = $("tbody tr").eq(i).find("[name=kredi]").val();
+            not = $("tbody tr").eq(i).find("[name=not]").val();
+            localStorage.setItem("ders" + i, ders);
+            localStorage.setItem("kredi" + i, kredi);
+            localStorage.setItem("not" + i, not);
+        }
+        localStorage.setItem("length", length);
     }
 }
 
-function localeSatirKaydet(index, value1, value2, value3){
-    if (typeof(Storage) !== "undefined") {
-        localStorage.setItem("ders" + index, value1);
-        localStorage.setItem("kredi" + index, value2);
-        localStorage.setItem("not" + index, value3);
-    }
-}
-
-function localdenSil(key){
-    if (typeof(Storage) !== "undefined") {
-        localStorage.removeItem(key);
-    }
-}
-
-function localdenSatirSil(index){
+function localdenSil(index){
     if (typeof(Storage) !== "undefined") {
         localStorage.removeItem("ders" + index);
         localStorage.removeItem("kredi" + index);
@@ -75,53 +71,47 @@ function localdenSatirSil(index){
     }
 }
 
-function localVerileriGetir(){
-    var index = 1;
-    while(localStorage.getItem("ders" + index)){
-        dersEkle(localStorage.getItem("ders" + index)
-                 , localStorage.getItem("kredi" + index)
-                 , localStorage.getItem("not" + index), index);
-        index++;
+function localVerileriGetir(length){
+    for(var i = length; i >= 1; i--){
+        dersEkle(i, localStorage.getItem("ders" + i),
+                 localStorage.getItem("kredi" + i),
+                 localStorage.getItem("not" + i));
     }
 }
-
+//--------------------------------------------------------------------------//
 $(document).ready(function(){
-    var ders, kredi, not, index;
-    localVerileriGetir();
+    var ders, kredi, not;
+    localVerileriGetir(localStorage.getItem("length"));
     agnoHesapla();
-
     $(".plusBtn").click(function(){
-        index = indexHesapla();
         ders = $("[name=ders]").val();
         kredi = $("[name=kredi]").val();
         not = $("[name=not]").val();
-        dersEkle(ders, kredi, not, index);
+        dersEkle(1, ders, kredi, not);
+
+        $("tbody tr").eq(1).nextAll().children("th").text(function() {
+            return parseInt($(this).text()) + 1;
+        });
+
         agnoHesapla();
         inputlariBosalt();
-        localeSatirKaydet(index, ders, kredi, not);
     });
 
     $("tbody").on("click", ".close", function(){
-        var newIndex;
         $(this).parents("tr").nextAll().children("th").text(function() {
-            newIndex = parseInt($(this).text()) - 1;
-            ders = $(this).next().children("[name=ders]").val();
-            kredi = $(this).nextAll().children("[name=kredi]").val();
-            not = $(this).nextAll().children("[name=not]").val();
-            localeSatirKaydet(newIndex, ders, kredi, not);
-            return newIndex;
+            return parseInt($(this).text()) - 1;
         });
-        localdenSatirSil($("tr").last().index());
+
+        localdenSil($("tr").last().index());
         $(this).parents("tr").remove();
         agnoHesapla();
     });
 
-    $("tbody").on("blur", ".plainTextInput",function(){
-        var key, value;
-        key = $(this).attr("name");
-        index = $(this).parent().siblings("th").text();
-        value = $(this).val();
-        localeKaydet(key + index, value);
+    $("tbody").on("blur", ".plainTextInput", function(){
         agnoHesapla();
     });
+});
+
+$(window).bind('beforeunload', function(){
+    localeKaydet(getLength());
 });
