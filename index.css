@@ -94,4 +94,8 @@ input {
         padding-right: 0px;
         text-align: center;
     }
+
+    #bootstrap-overrides .not {
+        padding-right: 14px;
+    }
 }

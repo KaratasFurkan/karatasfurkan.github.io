@@ -27,13 +27,16 @@ function getLength(){
 }
 
 function agnoHesapla(){
-    var agno = 0;
-    var kredi = 0;
+    var agno = 0, kredi = 0, tempKredi = 0, tempNot = 0;
     var row = $("#inputTr");
     while(row.next().html()){
         row = row.next();
-        kredi += parseFloat(row.find("[name=kredi]").val());
-        agno += parseFloat(row.find("[name=kredi]").val()) * parseFloat(row.find("[name=not]").val());
+        tempKredi = parseFloat(row.find("[name=kredi]").val());
+        tempNot = parseFloat(row.find("[name=not]").val());
+        if(!isNaN(tempKredi) && !isNaN(tempNot)){
+            kredi += tempKredi;
+            agno += tempKredi * tempNot;
+        }
     }
     agno /= kredi;
     if(agno){
@@ -112,7 +115,7 @@ $(document).ready(function(){
                 $(".form-control").eq(1).focus();
             }
         })
-        .on("keyup", function() {
+        .on("input", function() {
             if(areInputsEmpty()){
                 disableTheButton();
             }
@@ -129,7 +132,7 @@ $(document).ready(function(){
                 $(".form-control").eq(2).focus();
             }
         })
-        .on("keyup", function() {
+        .on("input", function() {
             if(areInputsEmpty()){
                 disableTheButton();
             }
@@ -148,7 +151,7 @@ $(document).ready(function(){
                 $(".form-control").eq(0).focus();
             }
         })
-        .on("keyup", function() {
+        .on("input", function() {
             if(areInputsEmpty()){
                 disableTheButton();
             }
@@ -163,9 +166,9 @@ $(document).ready(function(){
                 agnoHesapla();
             }
         })
-        .on("keyup", function() {
+        .on("input", function() {
             if($(this).val() == ""){
-                $(this).attr("placeholder", "Doldurun.")
+                $(this).attr("placeholder", "?")
                     .parent().addClass("danger");
             }
             else{
