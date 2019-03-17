@@ -1,14 +1,14 @@
 function dersEkle(index, ders, kredi, not){
     var markup = '<tr>'
-        + '<th scope="row">' + index + '</th>'
+        + '<th scope="row" class="pdLeftRightZero">' + index + '</th>'
         + '<td class="col-md-5 paddingLeftZero">'
         + '<input type="text" class="plainTextInput" name="ders" value="'+ ders +'"/></td>'
         + '<td class="col-md-2 paddingLeftZero">'
         + '<input type="number" class="plainTextInput" name="kredi" min="0" value="'+ kredi +'"/></td>'
         + '<td class="col-md-2 paddingLeftZero">'
         + '<input type="number" class="plainTextInput" name="not" min="0" max="4" step="0.5" value="'+ not +'"/></td>'
-        + '<td class="paddingLeftZero">'
-        + '<button type="button" class="close" aria-label="Close">'
+        + '<td class="paddingLeftZero pdLeftRightZero">'
+        + '<button type="button" class="close pdLeftRightZero" aria-label="Close">'
         + '<span aria-hidden="true">&times;</span>'
         + '</button>'
         + '</td>'
@@ -143,8 +143,7 @@ $(document).ready(function(){
             if (event.key === "Enter") {
                 event.preventDefault();
                 if(!$(".plusBtn").prop("disabled")){
-                    $(".plusBtn").click()
-                        .prop("disabled", true).addClass("disabled");
+                    $(".plusBtn").click();
                 }
                 $(".form-control").eq(0).focus();
             }
@@ -187,6 +186,7 @@ $(document).ready(function(){
 
         agnoHesapla();
         inputlariBosalt();
+        disableTheButton();
     });
 
     $("tbody").on("click", ".close", function(){

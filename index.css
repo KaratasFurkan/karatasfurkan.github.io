@@ -82,3 +82,16 @@ input {
 #agno {
     font-size: 70px;
 }
+
+@media screen and (max-width:768px) {
+    #bootstrap-overrides .paddingLeftZero {
+        padding-left: 0px;
+        padding-right: 2px;
+    }
+
+    #bootstrap-overrides .pdLeftRightZero {
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: center;
+    }
+}
