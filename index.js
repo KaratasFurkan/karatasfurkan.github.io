@@ -160,21 +160,16 @@ $(document).ready(function(){
             }
         });
 
-    $(".plainTextInput")
-        .on("keydown", function(event) {
-            if (event.key === "Enter") {
-                agnoHesapla();
-            }
-        })
-        .on("input", function() {
-            if($(this).val() == ""){
-                $(this).attr("placeholder", "?")
-                    .parent().addClass("danger");
-            }
-            else{
-                $(this).parent().removeClass("danger");
-            }
-        });
+    $(".plainTextInput").on("input", function() {
+        agnoHesapla();
+        if($(this).val() == ""){
+            $(this).attr("placeholder", "?")
+                .parent().addClass("danger");
+        }
+        else{
+            $(this).parent().removeClass("danger");
+        }
+    });
     //--------------------------------------//
 
     $(".plusBtn").click(function(){
@@ -199,10 +194,6 @@ $(document).ready(function(){
 
         localdenSil($("tr").last().index());
         $(this).parents("tr").remove();
-        agnoHesapla();
-    });
-
-    $("tbody").on("blur", ".plainTextInput", function(){
         agnoHesapla();
     });
 });
