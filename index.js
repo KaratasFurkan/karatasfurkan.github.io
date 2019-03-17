@@ -48,6 +48,24 @@ function inputlariBosalt(){
     $("#inputTr").find("input").val("");
 }
 
+function areInputsEmpty(){
+    var empty = false;
+    $(".form-control").each(function(){
+        if($.trim($(this).val()) == ""){
+            empty = true;
+        }
+    });
+    return empty;
+}
+
+function disableTheButton(){
+    $(".plusBtn").prop("disabled", true).addClass("disabled");
+}
+
+function enableTheButton(){
+    $(".plusBtn").prop("disabled", false).removeClass("disabled");
+}
+
 function localeKaydet(length){
     if (typeof(Storage) !== "undefined") {
         var i, ders, kredi, not;
@@ -87,33 +105,74 @@ $(document).ready(function(){
     $(".form-control").eq(0).focus();
 
     //----------- Input kutuları -----------//
-    $(".form-control").eq(0).on("keydown", function(event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            $(".form-control").eq(1).focus();
-        }
-    });
+    $(".form-control").eq(0)
+        .on("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                $(".form-control").eq(1).focus();
+            }
+        })
+        .on("keyup", function() {
+            if(areInputsEmpty()){
+                disableTheButton();
+            }
+            else{
+                enableTheButton();
+            }
+        });
 
-    $(".form-control").eq(1).on("keydown", function(event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            $(".form-control").eq(2).focus();
-        }
-    });
 
-    $(".form-control").eq(2).on("keydown", function(event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            $(".plusBtn").click();
-            $(".form-control").eq(0).focus();
-        }
-    });
+    $(".form-control").eq(1)
+        .on("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                $(".form-control").eq(2).focus();
+            }
+        })
+        .on("keyup", function() {
+            if(areInputsEmpty()){
+                disableTheButton();
+            }
+            else{
+                enableTheButton();
+            }
+        });
 
-    $(".plainTextInput").on("keydown", function(event) {
-        if (event.keyCode === 13) {
-            agnoHesapla();
-        }
-    });
+    $(".form-control").eq(2)
+        .on("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if(!$(".plusBtn").prop("disabled")){
+                    $(".plusBtn").click()
+                        .prop("disabled", true).addClass("disabled");
+                }
+                $(".form-control").eq(0).focus();
+            }
+        })
+        .on("keyup", function() {
+            if(areInputsEmpty()){
+                disableTheButton();
+            }
+            else{
+                enableTheButton();
+            }
+        });
+
+    $(".plainTextInput")
+        .on("keydown", function(event) {
+            if (event.key === "Enter") {
+                agnoHesapla();
+            }
+        })
+        .on("keyup", function() {
+            if($(this).val() == ""){
+                $(this).attr("placeholder", "Doldurun.")
+                    .parent().addClass("danger");
+            }
+            else{
+                $(this).parent().removeClass("danger");
+            }
+        });
     //--------------------------------------//
 
     $(".plusBtn").click(function(){
