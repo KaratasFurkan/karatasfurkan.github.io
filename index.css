@@ -83,6 +83,12 @@ input {
     font-size: 70px;
 }
 
+.donem {
+    padding-left: 14px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 @media screen and (max-width:768px) {
     #bootstrap-overrides .paddingLeftZero {
         padding-left: 0px;
