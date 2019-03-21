@@ -1,0 +1,81 @@
+1.Yıl - Güz Yarıyılı
+
+Atatürk İlkeleri ve İnkılâp Tarihi I,0
+Bilgisayar Bilimlerine Giriş,4
+İş Sağlığı ve Güvenliği 1,2
+Fizik 1,4
+Matematik 1,4
+Lineer Cebir,2
+İleri İngilizce I,3
+Seçmeli 1-1,3
+
+1.Yıl - Bahar Yarıyılı
+
+Yapısal Programlamaya Giriş,4
+Sayısal Analiz,3
+Devre Teorisi,4
+İş Sağlığı ve Güvenliği 2,2
+Mühendisler için Yarıiletken Fiziği,3
+Matematik 2,4
+İleri İngilizce II,3
+
+2.Yıl - Güz Yarıyılı
+
+İstatistik ve Olasılık Hesapları,3
+Alt Seviye Programlama,3
+Yapısal Programlama,4
+Bilgisayar Mühendisleri için Sinyaller ve Sistemler,3
+Seminer,0
+Ayrık Matematik,3
+Lojik Devreler,4
+Seçmeli 2-1,2
+
+2.Yıl - Bahar Yarıyılı
+
+Nesneye Yönelik Programlama,4
+Bilgisayar Donanımı,3
+Elektronik Devreler,3
+Sistem Analizi ve Tasarımı,2
+Hesaplama Kuramı,3
+Veri Yapıları ve Algoritmalar,4
+Seçmeli 3-1,3
+
+3.Yıl - Güz Yarıyılı
+
+İşletim Sistemleri,3
+Algoritma Analizi,3
+Mikroişlemci Sistemleri,3
+Veritabanı Yönetimi,4
+Veri İletişimi,3
+Mesleki Seçmeli 1-1,3
+Seçmeli 1-2,3
+
+3.Yıl - Bahar Yarıyılı
+
+Genel Staj,0
+Bilgisayar Projesi,3
+Mesleki Hukuk ve Etik,2
+Ağ Teknolojileri,3
+Yazılım Mühendisliği,3
+Mesleki Seçmeli 1-2,3
+Mesleki Seçmeli 1-3,3
+
+4.Yıl - Güz Yarıyılı
+
+Bilişim Sistemleri Güvenliği,4
+Gömülü Sistemler,3
+Türkçe 1,0
+Mesleki Seçmeli 1-4,3
+Mesleki Seçmeli 1-5,3
+Mesleki Seçmeli 1-6,3
+Seçmeli 4-1,1
+
+4.Yıl - Bahar Yarıyılı
+
+Atatürk İlkeleri ve İnkılâp Tarihi II,0
+Mesleki Staj,0
+Bitirme Çalışması,4
+Türkçe 2,0
+Mesleki Seçmeli 1-7,3
+Mesleki Seçmeli 1-8,3
+Mesleki Seçmeli 1-9,3
