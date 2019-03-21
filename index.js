@@ -1,4 +1,4 @@
-function dersEkle(index, ders, kredi, not){
+function dersEkle(index, ders, kredi, not = ""){
     var markup = '<tr>'
         + '<th scope="row" class="pdLeftRightZero">' + index + '</th>'
         + '<td class="col-md-5 paddingLeftZero">'
@@ -14,6 +14,28 @@ function dersEkle(index, ders, kredi, not){
         + '</td>'
         + '</tr>';
     $("#inputTr").after(markup);
+}
+
+function egitimPlaniEkle(){
+    var index;
+    $.get("https://raw.githubusercontent.com/KaratasFurkan/AndroidStudioProjects/master/bologna.txt?token=AcWqXBx6nOVRbon4r9Jn7AIdjtdTGkvTks5cnUC3wA%3D%3D", function(data){
+        data = data.split("\n");
+        data.reverse();
+        index = data.length - 24;
+        data.forEach(function(item){
+            item = item.split(",");
+            if(item[0].includes(".Yıl")){
+                $("#inputTr").after("<tr><th>-</th>"
+                                    + "<td class='paddingLeftZero'><span class='donem'>"
+                                    + item +  "</span></td><td></td><td></td><td></td></tr>");
+            }
+            else if (item[0] == ""){
+            }
+            else{
+                dersEkle(index--, item[0], item[1]);
+            }
+        });
+    });
 }
 
 function getLength(){
@@ -160,7 +182,7 @@ $(document).ready(function(){
             }
         });
 
-    $(".plainTextInput").on("input", function() {
+    $("tbody").on("input", ".plainTextInput", function() {
         agnoHesapla();
         if($(this).val() == ""){
             $(this).attr("placeholder", "?")
@@ -179,12 +201,16 @@ $(document).ready(function(){
         dersEkle(1, ders, kredi, not);
 
         $("tbody tr").eq(1).nextAll().children("th").text(function() {
-            return parseInt($(this).text()) + 1;
+            return parseInt($(this).text()) ? parseInt($(this).text()) + 1 : "-";
         });
 
         agnoHesapla();
         inputlariBosalt();
         disableTheButton();
+    });
+
+    $("#ytu").click(function(){
+        egitimPlaniEkle();
     });
 
     $("tbody").on("click", ".close", function(){
