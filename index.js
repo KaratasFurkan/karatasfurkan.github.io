@@ -222,6 +222,36 @@ $(document).ready(function(){
         $(this).parents("tr").remove();
         agnoHesapla();
     });
+
+    // Get the modal
+    var modal = document.getElementById('modal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("delAll");
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks cancel, close the modal
+    $("#vazgec").on("click", function(){
+        modal.style.display = "none";
+    });
+
+    // Delete all
+    $("#sil").on("click", function(){
+        $("#inputTr").nextAll().remove();
+        modal.style.display = "none";
+        localStorage.clear();
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
 });
 
 $(window).bind('beforeunload', function(){

@@ -30,7 +30,11 @@
                             <th>Ders</th>
                             <th>Kredi</th>
                             <th class="not">Not</th>
-                            <th></th>
+                            <th>
+                                <button id="delAll" type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +73,17 @@
             <div class="col-md-2">
                 <button id="ytu" type="button" class="btn btn-default">
                     <span>YTÜ CE Eğitim Planını Ekle</span>
+                </button>
+            </div>
+        </div>
+        <div id="modal">
+            <div id="modal-content">
+                <p style="font-size: large; margin-bottom: 15px">Tüm dersler silinsin mi?</p>
+                <button id="sil" type="button" class="btn btn-default">
+                    <span>Sil</span>
+                </button>
+                <button id="vazgec" type="button" class="btn btn-default">
+                    <span>Vazgeç</span>
                 </button>
             </div>
         </div>
