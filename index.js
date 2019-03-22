@@ -215,7 +215,7 @@ $(document).ready(function(){
 
     $("tbody").on("click", ".close", function(){
         $(this).parents("tr").nextAll().children("th").text(function() {
-            return parseInt($(this).text()) - 1;
+            return parseInt($(this).text()) ? parseInt($(this).text()) - 1 : "-";
         });
 
         localdenSil($("tr").last().index());
@@ -243,6 +243,7 @@ $(document).ready(function(){
     $("#sil").on("click", function(){
         $("#inputTr").nextAll().remove();
         modal.style.display = "none";
+        agnoHesapla();
         localStorage.clear();
     });
 
