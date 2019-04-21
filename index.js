@@ -16,10 +16,12 @@ function dersEkle(index, ders, kredi, not = ""){
     $("#inputTr").after(markup);
 }
 
-function egitimPlaniEkle(){
+function egitimPlaniEkle(egitimPlani){
     var index, length = getLength();
+    var egitimPlanlari = ["https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuCe.txt",
+                          "https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuMekatronik.txt"];
 
-    $.get("https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuCe.txt", function(data){
+    $.get(egitimPlanlari[egitimPlani], function(data){
         data = data.split("\n");
         data.reverse();
         index = data.length - 24;
@@ -282,8 +284,8 @@ $(document).ready(function(){
     });
 
     // Add program
-    $("#ytu").click(function(){
-        egitimPlaniEkle();
+    $("#addProgram-modal").find(".program").click(function(){
+        egitimPlaniEkle($(this).index() - 1);
         addProgramModal.style.display = "none";
     });
 
