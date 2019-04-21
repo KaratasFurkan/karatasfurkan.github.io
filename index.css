@@ -123,7 +123,7 @@ input {
     padding-bottom: 10px;
     border: 1px solid #888;
     border-radius: 10px;
-    width: 16%; /* Could be more or less, depending on screen size */
+    width: 20%; /* Could be more or less, depending on screen size */
     text-align: center;
 }
 
@@ -132,7 +132,7 @@ input {
     margin-top: 20px;
 }
 
-#ytu {
+.program {
     border: none;
     background-color: inherit;
     padding: 10px;
@@ -142,7 +142,7 @@ input {
     margin-top: 20px;
 }
 
-#ytu:hover {
+.program:hover {
     background-color: #EFEFEF;
 }
 
@@ -163,6 +163,7 @@ input {
     }
 
     .modal-content {
-        width: 60%;
+        margin: 30% auto;
+        width: 70%;
     }
 }
