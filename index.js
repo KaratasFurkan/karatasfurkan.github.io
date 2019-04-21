@@ -296,6 +296,6 @@ $(document).ready(function(){
     };
 });
 
-window.addEventListener("beforeunload", function(event){
+window.addEventListener("unload", function(event){
     localeKaydet(getLength());
 });
