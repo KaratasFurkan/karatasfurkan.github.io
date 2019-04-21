@@ -2,11 +2,11 @@ function dersEkle(index, ders, kredi, not = ""){
     var markup = '<tr>'
         + '<th scope="row" class="pdLeftRightZero">' + index + '</th>'
         + '<td class="col-md-5 paddingLeftZero">'
-        + '<input type="text" class="plainTextInput" name="ders" value="'+ ders +'"/></td>'
+        + '<input type="text" class="plainTextInput" placeholder="?" name="ders" value="'+ ders +'"/></td>'
         + '<td class="col-md-2 paddingLeftZero">'
-        + '<input type="number" class="plainTextInput" name="kredi" min="0" value="'+ kredi +'"/></td>'
+        + '<input type="number" class="plainTextInput" placeholder="?" name="kredi" min="0" value="'+ kredi +'"/></td>'
         + '<td class="col-md-2 paddingLeftZero">'
-        + '<input type="number" class="plainTextInput" name="not" min="0" max="4" step="0.5" value="'+ not +'"/></td>'
+        + '<input type="number" class="plainTextInput" placeholder="?" name="not" min="0" max="4" step="0.5" value="'+ not +'"/></td>'
         + '<td class="paddingLeftZero pdLeftRightZero">'
         + '<button type="button" class="close pdLeftRightZero" aria-label="Close">'
         + '<span aria-hidden="true">&times;</span>'
@@ -17,8 +17,9 @@ function dersEkle(index, ders, kredi, not = ""){
 }
 
 function egitimPlaniEkle(){
-    var index;
-    $.get("https://raw.githubusercontent.com/KaratasFurkan/AndroidStudioProjects/master/bologna.txt?token=AcWqXBx6nOVRbon4r9Jn7AIdjtdTGkvTks5cnUC3wA%3D%3D", function(data){
+    var index, length = getLength();
+
+    $.get("https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuCe.txt", function(data){
         data = data.split("\n");
         data.reverse();
         index = data.length - 24;
@@ -26,21 +27,28 @@ function egitimPlaniEkle(){
             item = item.split(",");
             if(item[0].includes(".Yıl")){
                 $("#inputTr").after("<tr><th>-</th>"
-                                    + "<td class='paddingLeftZero'><span class='donem'>"
-                                    + item +  "</span></td><td></td><td></td><td></td></tr>");
+                                    + "<td class='paddingLeftZero' colspan='4'><span class='donem'>"
+                                    + item +  "</span></td></tr>");
             }
             else if (item[0] == ""){
             }
             else{
                 dersEkle(index--, item[0], item[1]);
+                //$("tbody tr").eq(1).find("[name=not]").parents("tr").addClass("warning");
             }
+        });
+
+        length = (getLength() - 8) - length; //egitim plani uzunluğu
+
+        $("tbody tr").eq(length + 8).nextAll().children("th").text(function() {
+            return length++ + 1;
         });
     });
 }
 
 function getLength(){
     var length;
-    if((length = $("tbody > tr:last-child > th").text())){ //assignment
+    if((length = $("tr").last().index())){ //assignment
         return parseInt(length);
     }
     else{
@@ -63,9 +71,11 @@ function agnoHesapla(){
     agno /= kredi;
     if(agno){
         $("#agno").text(agno.toFixed(2));
+        $("#kredi").text("Kredi: " + kredi);
     }
     else{
         $("#agno").text("");
+        $("#kredi").text("");
     }
 }
 
@@ -98,9 +108,14 @@ function localeKaydet(length){
             ders = $("tbody tr").eq(i).find("[name=ders]").val();
             kredi = $("tbody tr").eq(i).find("[name=kredi]").val();
             not = $("tbody tr").eq(i).find("[name=not]").val();
-            localStorage.setItem("ders" + i, ders);
-            localStorage.setItem("kredi" + i, kredi);
-            localStorage.setItem("not" + i, not);
+            if (ders === undefined){
+                localStorage.setItem("ders" + i, $("tbody tr").eq(i).find("span").text());
+                localStorage.setItem("egitimPlani", 1);
+            }else {
+                localStorage.setItem("ders" + i, ders);
+                localStorage.setItem("kredi" + i, kredi);
+                localStorage.setItem("not" + i, not);
+            }
         }
         localStorage.setItem("length", length);
     }
@@ -115,10 +130,26 @@ function localdenSil(index){
 }
 
 function localVerileriGetir(length){
+    var donem;
+
+    if (localStorage.getItem("egitimPlani") == 1){
+        donem = 8;
+    }else {
+        donem = 0;
+    }
+
     for(var i = length; i >= 1; i--){
-        dersEkle(i, localStorage.getItem("ders" + i),
-                 localStorage.getItem("kredi" + i),
-                 localStorage.getItem("not" + i));
+        if(localStorage.getItem("ders" + i).includes(".Yıl")){
+            $("#inputTr").after("<tr><th>-</th>"
+                                + "<td class='paddingLeftZero'><span class='donem'>"
+                                + localStorage.getItem("ders" + i)
+                                +  "</span></td><td></td><td></td><td></td></tr>");
+            donem--;
+        }else {
+            dersEkle(i - donem, localStorage.getItem("ders" + i),
+                     localStorage.getItem("kredi" + i),
+                     localStorage.getItem("not" + i));
+        }
     }
 }
 
@@ -184,13 +215,12 @@ $(document).ready(function(){
 
     $("tbody").on("input", ".plainTextInput", function() {
         agnoHesapla();
-        if($(this).val() == ""){
-            $(this).attr("placeholder", "?")
-                .parent().addClass("danger");
-        }
-        else{
-            $(this).parent().removeClass("danger");
-        }
+        // if($(this).val() == ""){
+        //     $(this).parents("tr").addClass("warning");
+        // }
+        // else{
+        //     $(this).parents("tr").removeClass("warning");
+        // }
     });
     //--------------------------------------//
 
@@ -209,10 +239,6 @@ $(document).ready(function(){
         disableTheButton();
     });
 
-    $("#ytu").click(function(){
-        egitimPlaniEkle();
-    });
-
     $("tbody").on("click", ".close", function(){
         $(this).parents("tr").nextAll().children("th").text(function() {
             return parseInt($(this).text()) ? parseInt($(this).text()) - 1 : "-";
@@ -223,34 +249,48 @@ $(document).ready(function(){
         agnoHesapla();
     });
 
-    // Get the modal
-    var modal = document.getElementById('modal');
+    // Get the modals
+    var delAllModal = document.getElementById("delAll-modal");
+    var addProgramModal = document.getElementById("addProgram-modal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("delAll");
+    var delAllBtn = document.getElementById("delAll");
+    var addProgramBtn = document.getElementById("addProgram");
 
-    // When the user clicks on the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
+    // When the user clicks on the buttons, open the modals
+    delAllBtn.onclick = function() {
+        delAllModal.style.display = "block";
+    };
+
+    addProgramBtn.onclick = function() {
+        addProgramModal.style.display = "block";
     };
 
     // When the user clicks cancel, close the modal
-    $("#vazgec").on("click", function(){
-        modal.style.display = "none";
+    $(".vazgec").on("click", function(){
+        delAllModal.style.display = "none";
+        addProgramModal.style.display = "none";
     });
 
     // Delete all
     $("#sil").on("click", function(){
         $("#inputTr").nextAll().remove();
-        modal.style.display = "none";
+        delAllModal.style.display = "none";
         agnoHesapla();
         localStorage.clear();
     });
 
+    // Add program
+    $("#ytu").click(function(){
+        egitimPlaniEkle();
+        addProgramModal.style.display = "none";
+    });
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == delAllModal || event.target == addProgramModal) {
+            delAllModal.style.display = "none";
+            addProgramModal.style.display = "none";
         }
     };
 });
