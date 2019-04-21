@@ -105,6 +105,7 @@ function enableTheButton(){
 
 function localeKaydet(length){
     if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("length", length);
         var i, ders, kredi, not;
         for(i = 1; i <= length; i++){
             ders = $("tbody tr").eq(i).find("[name=ders]").val();
@@ -119,7 +120,6 @@ function localeKaydet(length){
                 localStorage.setItem("not" + i, not);
             }
         }
-        localStorage.setItem("length", length);
     }
 }
 
