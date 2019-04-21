@@ -1,0 +1,84 @@
+1.Yıl - Güz Yarıyılı
+
+Matematik 1,4
+Lineer Cebir,2
+Fizik 1,4
+İleri İngilizce I,3
+Bilgisayar Destekli Tasarım,4
+Mekatronik Mühendisliğine Giriş,2
+Lab 1 - Atölye ve İmalat,1
+İş Sağlığı ve Güvenliği 1,2
+
+1.Yıl - Bahar Yarıyılı
+
+Matematik 2,4
+Fizik 2,4
+İleri İngilizce II,3
+Bilgisayar Programlama ve Algoritmalar,3
+Malzeme Bilimi,3
+Elektrik Devre Temelleri,3
+İş Sağlığı ve Güvenliği 2,2
+
+2.Yıl - Güz Yarıyılı
+
+Diferansiyel Denklemler,4
+Nesneye Yönelik Programlama,3
+Mühendislik Mekaniği I,3
+Lab 2 - Elektrik ve Elektronik,1
+Analog Elektronik,3
+Atölye Stajı,0
+Sosyal Seçmeli 1-1,3
+Türkçe 1,0
+
+2.Yıl - Bahar Yarıyılı
+
+Mühendislik Mekaniği II,3
+Lojik Devreler,3
+İşaretler ve Sistemler,3
+Mukavemet,3
+Elektronik ve Haberleşme Devreleri,3
+Termodinamik,3
+Türkçe 2,0
+
+3.Yıl - Güz Yarıyılı
+
+Sistem Dinamiği,3
+Mikroişlemciler ve Programlanması,3
+Makine Elemanları,4
+Akışkanlar Mekaniği ve Isı Geçişi,3
+Sayısal Yöntemler,3
+Mesleki Seçmeli 1-1,3
+Meslekî Alan Stajı,0
+Atatürk İlkeleri ve İnkılap Tarihi I,0
+
+3.Yıl - Bahar Yarıyılı
+
+Mühendisler için İstatistik ve Deneysel Yöntemler,3
+Otomatik Kontrol,3
+Endüstriyel Otomasyon,3
+Lab 3 - Sistem Dinamiği ve Kontrol,1
+Elektromekanik Enerji Dönüşüm Sistemleri,3
+Hidrolik - Pnömatik Sistemleri,3
+Sosyal Seçmeli 1-2,3
+Atatürk İlkeleri ve İnkılâp Tarihi II,0
+
+4.Yıl - Güz Yarıyılı
+
+Mekatronik Sistem Tasarımı,2
+Elektriksel Tahrik Sistemleri,3
+Mesleki Seçmeli 2-1 Bilgisayar Programlama,3
+Mesleki Seçmeli 3-1,3
+Mesleki Seçmeli 3-2,3
+Mesleki Seçmeli 3-3,3
+Mesleki Seçmeli 3-4,3
+Meslekî Alan Stajı,0
+
+4.Yıl - Bahar Yarıyılı
+
+Bitirme Çalışması,4
+Lab 4 - Motorlar ve Sürücüler,1
+Mesleki Seçmeli 3-5,3
+Mesleki Seçmeli 3-6,3
+Mesleki Seçmeli 3-7,3
+Mesleki Seçmeli 3-8,3
+Mesleki Seçmeli 4-1 Yönetim Becerileri,3
