@@ -159,6 +159,7 @@ $(document).ready(function(){
     localVerileriGetir(localStorage.getItem("length"));
     agnoHesapla();
     $(".form-control").eq(0).focus();
+    //$("tbody").sortable(); TODO drag&drop eklenecek
 
     //----------- Input kutuları -----------//
     $(".form-control").eq(0)
@@ -295,6 +296,6 @@ $(document).ready(function(){
     };
 });
 
-$(window).bind('beforeunload', function(){
+window.addEventListener("beforeunload", function(event){
     localeKaydet(getLength());
 });
