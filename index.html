@@ -7,19 +7,29 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Agno Hesaplayıcı</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
         <!-- myCSS -->
         <link href="index.css" rel="stylesheet"/>
-        <!-- jQuery -->
+        <!-- jQuery / Javascript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="index.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
         <!-- jQuery -->
     </head>
     <body id="bootstrap-overrides">
-        <div class="row">
-            <div id="agnoRow" class="col-md-2 col-md-offset-5">
+        <div class="row" id="agnoRow">
+            <div class="col-md-2 col-md-offset-5">
                 <span id="agno"></span>
             </div>
+        </div>
+        <div id="kredi">
+
         </div>
         <div class="row" id="table-row">
             <div class="col-md-6 col-md-offset-3 col-xs-12">
@@ -30,10 +40,21 @@
                             <th>Ders</th>
                             <th>Kredi</th>
                             <th class="not">Not</th>
-                            <th>
-                                <button id="delAll" type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                </button>
+                            <th class="paddingLeftZero">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <span class="glyphicon glyphicon-option-vertical"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                                        <li id="delAll"><a href="#">Tümünü sil</a></li>
+                                        <li id="addProgram"><a href="#">Hazır eğitim planı ekle</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="https://github.com/KaratasFurkan/karatasfurkan.github.io" target="_blank">Github</a></li>
+                                    </ul>
+                                </div>
+                                <!-- <button id="delAll" type="button" class="btn btn-default" title="Tümünü Sil">
+                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                     </button> -->
                             </th>
                         </tr>
                     </thead>
@@ -70,19 +91,23 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-2">
-                <button id="ytu" type="button" class="btn btn-default">
-                    <span>YTÜ CE Eğitim Planını Ekle</span>
-                </button>
-            </div>
         </div>
-        <div id="modal">
-            <div id="modal-content">
-                <p style="font-size: large; margin-bottom: 15px">Tüm dersler silinsin mi?</p>
+        <div id="delAll-modal" class="modal">
+            <div id="del-All-modal-content" class="modal-content">
+                <p style="font-size: large">Tüm dersler silinsin mi?</p>
                 <button id="sil" type="button" class="btn btn-default">
                     <span>Sil</span>
                 </button>
-                <button id="vazgec" type="button" class="btn btn-default">
+                <button type="button" class="btn btn-default vazgec">
+                    <span>Vazgeç</span>
+                </button>
+            </div>
+        </div>
+        <div id="addProgram-modal" class="modal">
+            <div id="addProgram-modal-content" class="modal-content">
+                <p style="font-size: large; margin-bottom: 20px">Hazır eğitim planları:</p>
+                <button id="ytu" type="button">YTÜ Bilgisayar Mühendisliği</button>
+                <button type="button" class="btn btn-default vazgec">
                     <span>Vazgeç</span>
                 </button>
             </div>
