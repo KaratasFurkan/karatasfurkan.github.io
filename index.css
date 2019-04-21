@@ -61,7 +61,16 @@ table {
 }
 
 #thead th {
-    padding: 8px 8px 8px 14px;
+    padding: 0px 8px 0px 14px;
+}
+
+#dropdownMenu {
+    border-color: transparent;
+    background-color: inherit;
+}
+
+#dropdownMenu:hover {
+    background-color: #DDDDDD;
 }
 
 .plainTextInput {
@@ -83,13 +92,18 @@ input {
     font-size: 70px;
 }
 
+#kredi {
+    text-align: center;
+    font-size: 14px;
+}
+
 .donem {
     padding-left: 14px;
     font-size: 18px;
     font-weight: bold;
 }
 
-#modal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -102,18 +116,36 @@ input {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
+    padding-bottom: 10px;
     border: 1px solid #888;
+    border-radius: 10px;
     width: 16%; /* Could be more or less, depending on screen size */
     text-align: center;
 }
 
 #sil {
     margin-right: 20px;
+    margin-top: 20px;
 }
+
+#ytu {
+    border: none;
+    background-color: inherit;
+    padding: 10px;
+}
+
+.vazgec {
+    margin-top: 20px;
+}
+
+#ytu:hover {
+    background-color: #EFEFEF;
+}
+
 @media screen and (max-width:768px) {
     #bootstrap-overrides .paddingLeftZero {
         padding-left: 0px;
@@ -128,5 +160,9 @@ input {
 
     #bootstrap-overrides .not {
         padding-right: 14px;
+    }
+
+    .modal-content {
+        width: 60%;
     }
 }
