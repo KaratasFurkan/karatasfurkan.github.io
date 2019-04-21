@@ -143,9 +143,9 @@ function localVerileriGetir(length){
     for(var i = length; i >= 1; i--){
         if(localStorage.getItem("ders" + i).includes(".Yıl")){
             $("#inputTr").after("<tr><th>-</th>"
-                                + "<td class='paddingLeftZero'><span class='donem'>"
+                                + "<td class='paddingLeftZero' colspan='4'><span class='donem'>"
                                 + localStorage.getItem("ders" + i)
-                                +  "</span></td><td></td><td></td><td></td></tr>");
+                                +  "</span></td></tr>");
             donem--;
         }else {
             dersEkle(i - donem, localStorage.getItem("ders" + i),
