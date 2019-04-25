@@ -218,6 +218,7 @@ $(document).ready(function(){
 
     $("tbody").on("input", ".plainTextInput", function() {
         agnoHesapla();
+        localeKaydet(getLength());
         // if($(this).val() == ""){
         //     $(this).parents("tr").addClass("warning");
         // }
@@ -240,6 +241,7 @@ $(document).ready(function(){
         agnoHesapla();
         inputlariBosalt();
         disableTheButton();
+        localeKaydet(getLength());
     });
 
     $("tbody").on("click", ".close", function(){
@@ -250,6 +252,7 @@ $(document).ready(function(){
         localdenSil($("tr").last().index());
         $(this).parents("tr").remove();
         agnoHesapla();
+        localeKaydet(getLength());
     });
 
     // Get the modals
@@ -286,6 +289,7 @@ $(document).ready(function(){
     // Add program
     $("#addProgram-modal").find(".program").click(function(){
         egitimPlaniEkle($(this).index() - 1);
+        localeKaydet(getLength());
         addProgramModal.style.display = "none";
     });
 
@@ -296,8 +300,4 @@ $(document).ready(function(){
             addProgramModal.style.display = "none";
         }
     };
-});
-
-window.addEventListener("unload", function(event){
-    localeKaydet(getLength());
 });
