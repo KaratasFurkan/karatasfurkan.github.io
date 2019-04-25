@@ -16,7 +16,7 @@ function dersEkle(index, ders, kredi, not = ""){
     $("#inputTr").after(markup);
 }
 
-function egitimPlaniEkle(egitimPlani){
+async function egitimPlaniEkle(egitimPlani, callback){
     var index, length = getLength();
     var egitimPlanlari = ["https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuCe.txt",
                           "https://raw.githubusercontent.com/KaratasFurkan/karatasfurkan.github.io/master/E%C4%9Fitim%20Planlar%C4%B1/YtuMekatronik.txt"];
@@ -26,7 +26,7 @@ function egitimPlaniEkle(egitimPlani){
         data.reverse();
         index = data.length - 24;
         data.forEach(function(item){
-            item = item.split(",");
+            item = item.toString().split(",");
             if(item[0].includes(".Yıl")){
                 $("#inputTr").after("<tr><th>-</th>"
                                     + "<td class='paddingLeftZero' colspan='4'><span class='donem'>"
@@ -45,7 +45,12 @@ function egitimPlaniEkle(egitimPlani){
         $("tbody tr").eq(length + 8).nextAll().children("th").text(function() {
             return length++ + 1;
         });
+        callback();
     });
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function getLength(){
@@ -288,8 +293,9 @@ $(document).ready(function(){
 
     // Add program
     $("#addProgram-modal").find(".program").click(function(){
-        egitimPlaniEkle($(this).index() - 1);
-        localeKaydet(getLength());
+        egitimPlaniEkle($(this).index() - 1, function(){
+            localeKaydet(getLength());
+        });
         addProgramModal.style.display = "none";
     });
 
